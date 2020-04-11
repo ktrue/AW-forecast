@@ -1,8 +1,8 @@
 # Aerisweather forecast formatting script - multilingual, international
 
-This script was designed to replace the _DS-forecast.php_ script as **DarkSky has discontinued offering their API keys effective 31-Mar-2020** as DarkSky was purchased by Apple and announced the end of their API for existing users the end of 2021.  
+This script was designed to replace the [_DS-forecast.php_](https://github.com/ktrue/DarkSky]) script as **DarkSky has discontinued offering their API keys effective 31-Mar-2020**. DarkSky was purchased by Apple and announced the end of their API for existing users the end of 2021.  
 
-This script is the third provider to be used for worldwide forecasts, and I hope Aerisweather will continue to offer the API. It is free for weather stations that upload to PWSweather.com and for-fee to others.  
+This script is the third provider to be used for worldwide forecasts, and I hope Aerisweather will continue to offer the API. It is free for weather stations that upload to PWSweather.com and for-fee to others. While this script can be used for USA and Canada forecasts, the USA [_advforecast2.php_](https://github.com/ktrue/NWS-forecast) and Canada [_EC-forecast.php_](https://github.com/ktrue/EC-forecast) scripts provide more data and alerts and should be used for those geographies. 
 
 Aerisweather DOES NOT currently provide international versions of the English forecast text -- it is is only one short sentence and is used as the icon description.  
 The _AW-forecast-lang.php_ provides translation capabilities for Saratoga Template languages for additional text added to the text forecast from data provided by Aerisweather API (i.e. Temperature High/Low, Probibility of precipation, Wind direction, speed and gust, UV index ). The _AW-forecast-lang.php_ which has the encoded lookups for boilerplate language translations is provided as a separate script for easy update as new languages are added.  
