@@ -14,7 +14,7 @@ Currently, _AW-forecast.php_ supports the following languages (in addition to En
 
 ## Sample Output
 
-<img sce="./sample-output.png" alt="sample output">
+![sample output](./sample-output.png)
 
 
 In order to use this script you need to:
