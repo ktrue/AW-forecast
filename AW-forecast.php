@@ -3,8 +3,9 @@
 //    Forecast from aerisweather.com (api.aerisapi.com) - based on AW-forecast.php V1.09 - 23-Jan-2019
 //
 // Version 1.00 - 10-Apr-2020 - initial release
+// Version 1.01 - 13-Apr-2020 - fix for day icon shown for night forecast in some cases
 //
-$Version = "AW-forecast.php (ML) Version 1.00 - 10-Apr-2020";
+$Version = "AW-forecast.php (ML) Version 1.01 - 13-Apr-2020";
 //
 // error_reporting(E_ALL);  // uncomment to turn on full error reporting
 //
@@ -113,7 +114,7 @@ $refetchSeconds = 3600;                   // cache lifetime (3600sec = 60 minute
 // uk2: same as si, except that nearestStormDistance and visibility are in miles, and windSpeed and windGust in miles per hour
 // us: Imperial units (F,mph,inHg,in,miles)
 // 
-$showUnitsAs  = 'ca'; // ='us' for imperial, , ='si' for metric, ='ca' for canada, ='uk2' for UK
+$showUnitsAs  = 'us'; // ='us' for imperial, , ='si' for metric, ='ca' for canada, ='uk2' for UK
 //
 $charsetOutput = 'ISO-8859-1';        // default character encoding of output
 //$charsetOutput = 'UTF-8';            // for standalone use if desired
@@ -1469,7 +1470,7 @@ function AW_fetch_microtime()
  // override icon with cloud coverage octets for Images of partly-cloudy-* and clear-*
  if(preg_match('/^(partly|clear)/i',$AWimage)) {
 	 $curicon = $tCCicon.'.jpg';
-	 if(strpos($AWimage,'-night') !==false) {
+	 if(strpos($AWimage,'n.png') !==false) {
 		 $curicon = 'n'.$curicon;
 	 }
 	 $Status .= "<!-- AW_img_replace using curicon=$curicon instead based on cloud coverage -->\n";
@@ -1477,7 +1478,7 @@ function AW_fetch_microtime()
  if(preg_match('/^wind/i',$AWimage) and $iconType !== '.gif') {
 	 // note: Meteotriviglio icons do not have the wind_{sky}.gif icons, only wind.gif
 	 $curicon = 'wind_'.$tCCicon.'.jpg';
-	 if(strpos($AWimage,'-night') !==false) {
+	 if(strpos($AWimage,'n.png') !==false) {
 		 $curicon = 'n'.$curicon;
 	 }
 	 $Status .= "<!-- AW_img_replace using curicon=$curicon instead based on cloud coverage -->\n";
