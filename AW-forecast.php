@@ -4,8 +4,9 @@
 //
 // Version 1.00 - 10-Apr-2020 - initial release
 // Version 1.01 - 13-Apr-2020 - fix for day icon shown for night forecast in some cases
+// Version 1.02 - 19-Jan-2022 - fix for PHP 8.1 Deprecated errata
 //
-$Version = "AW-forecast.php (ML) Version 1.01 - 13-Apr-2020";
+$Version = "AW-forecast.php (ML) Version 1.02 - 19-Jan-2022";
 //
 // error_reporting(E_ALL);  // uncomment to turn on full error reporting
 //
@@ -1820,7 +1821,7 @@ function AW_WindDir ($degrees) {
   }
   $windlabel = array ("N","NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
 	 "SSW","SW", "WSW", "W", "WNW", "NW", "NNW");
-  $dir = $windlabel[ fmod((($winddir + 11) / 22.5),16) ];
+  $dir = $windlabel[ (integer)fmod((($winddir + 11) / 22.5),16) ];
   return($dir);
 
 } // end function AW_WindDir
