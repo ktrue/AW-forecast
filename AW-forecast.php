@@ -5,8 +5,9 @@
 // Version 1.00 - 10-Apr-2020 - initial release
 // Version 1.01 - 13-Apr-2020 - fix for day icon shown for night forecast in some cases
 // Version 1.02 - 19-Jan-2022 - fix for PHP 8.1 Deprecated errata
+// Version 1.03 - 27-Dec-2022 - fixes for PHP 8.2
 //
-$Version = "AW-forecast.php (ML) Version 1.02 - 19-Jan-2022";
+$Version = "AW-forecast.php (ML) Version 1.03 - 27-Dec-2022";
 //
 // error_reporting(E_ALL);  // uncomment to turn on full error reporting
 //
@@ -1093,7 +1094,7 @@ print $Status;
 if($UnSupported) {
 
   print <<< EONAG
-<h1>Sorry.. this <a href="https://api.aerisapi.com/forecast/$AW_LATLONG/${showUnitsAs}12/$AWLANG">forecast</a> can not be processed at this time.</h1>
+<h1>Sorry.. this <a href="https://api.aerisapi.com/forecast/$AW_LATLONG/{$showUnitsAs}12/$AWLANG">forecast</a> can not be processed at this time.</h1>
 
 
 EONAG
@@ -1465,7 +1466,7 @@ function AW_fetch_microtime()
  	$tCCicon = AW_octets($AWcloudcover);
 
  if (!$curicon) { // no change.. use AW icon
-   return("<img src=\"${iconDir}na.jpg\" width=\"55\" height=\"55\" 
+   return("<img src=\"{$iconDir}na.jpg\" width=\"55\" height=\"55\" 
   alt=\"$AWcondtext\" title=\"$AWcondtext\"/>"); 
  }
  // override icon with cloud coverage octets for Images of partly-cloudy-* and clear-*
